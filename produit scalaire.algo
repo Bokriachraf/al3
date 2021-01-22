@@ -1,0 +1,68 @@
+// procedure et algorithme
+
+
+PROCEDURE produit_scalaire(v1,v2 : ARRAY_OF INTEGER, VAR prod : INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    prod :=0;
+    i:=0;
+    IF (v1.length <> v2.length) THEN
+                prod := NaN; 
+    END_IF
+    WHILE (i <v1.length ) DO
+        prod := prod + v1[i]*v2[i];
+        i:=i+1
+    END_WHILE
+END
+
+ALGORITHM orth_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [50];
+    prod : INTEGER;
+BEGIN
+        n1 := read_size();
+       read_array(n1,v1);
+        n2 := read_size();
+        read_array(n2,v2);
+    produit_scalaire(v1,v2,prod);
+    IF (prod = 0) THEN
+        Write("v1 et v2 sont orthogonaux");
+    ELSE
+        Write("v1 et v2 ne sont pas orthogonaux");
+    END_IF
+END
+
+// fonction et algorithme
+
+FUNCTION produit_scalaire(v1,v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i, prod : INTEGER;
+BEGIN
+    prod :=0;
+    i:=0;
+    IF (v1.length <> v2.length) THEN
+        RETURN NaN; 
+    END_IF
+    WHILE (i <v1.length ) DO
+        prod := prod + v1[i]*v2[i];
+    END_WHILE
+    RETURN prod ;
+END
+
+ALGORITHM orth_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [50];
+    prod : INTEGER;
+BEGIN
+    n1 := read_size();
+    read_array(n1,v1);
+    n2 := read_size();
+       read_array(n2,v2);
+    prod := produit_scalaire(v1,v2);
+    IF (prod = 0) THEN
+        Write("v1 et v2 sont orthogonaux");
+    ELSE
+        Write("v1 et v2 ne sont pas orthogonaux");
+    END_IF
+END
